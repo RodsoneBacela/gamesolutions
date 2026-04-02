@@ -41,7 +41,8 @@ export function generateRefreshToken(): string {
 type Handler = (req: NextRequest, ctx: { params: Record<string, string>; user: JWTPayload }) => Promise<NextResponse>;
 
 export function withAuth(handler: Handler, options?: { adminOnly?: boolean }) {
-  return async (req: NextRequest, ctx: { params: Record<string, string> }) => {
+  return async (req: NextRequest, ctx: { params: Promise<Record<string, string>> }) => {
+    const params = await ctx.params;
     const authHeader = req.headers.get('authorization');
     if (!authHeader?.startsWith('Bearer ')) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -52,6 +53,6 @@ export function withAuth(handler: Handler, options?: { adminOnly?: boolean }) {
     if (options?.adminOnly && user.role !== 'admin') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
-    return handler(req, { ...ctx, user });
+    return handler(req, { params, user });
   };
 }
