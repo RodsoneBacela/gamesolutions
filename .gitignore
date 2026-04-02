@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.env
+*.log
+.DS_Store
+dist/
+
+
+.env.local
+.env.development
+.env.production
+.env.example
+
+*.CLAUDE.md
+*.AGENTS.md
