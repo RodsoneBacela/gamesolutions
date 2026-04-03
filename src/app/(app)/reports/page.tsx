@@ -44,7 +44,7 @@ export default function ReportsPage() {
             <div><label className="label">Até</label><input type="date" className="input" style={{ width: 160 }} value={end} onChange={e => setEnd(e.target.value)} /></div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
             <div className="card">
               <h3 style={{ fontWeight: 600, marginBottom: '1rem' }}>Receita vs Despesa por Mês</h3>
               <ResponsiveContainer width="100%" height={240}>
@@ -100,7 +100,7 @@ export default function ReportsPage() {
           </div>
           {daily && (
             <>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
                 {[
                   { label: 'Total Sessões', value: daily.kpi?.sessions_total ?? 0 },
                   { label: 'Activas', value: daily.kpi?.sessions_active ?? 0 },

@@ -34,7 +34,7 @@ export default function TournamentsPage() {
 
   return (
     <div>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
+      <div className="page-header" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
         <div>
           <h1 className="font-display" style={{ fontSize:'1.75rem', fontWeight:700 }}>Torneios</h1>
           <p style={{ color:'var(--text-muted)', fontSize:'0.875rem' }}>{tournaments.length} torneios registados</p>
@@ -43,7 +43,7 @@ export default function TournamentsPage() {
       </div>
 
       {isLoading && (
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:'1rem' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(min(100%,280px),1fr))', gap:'1rem' }}>
           {[...Array(3)].map((_,i) => <div key={i} className="skeleton" style={{ height:180 }}/>)}
         </div>
       )}
@@ -85,7 +85,7 @@ export default function TournamentsPage() {
 
 function TournamentGrid({ tournaments, onOpen }: any) {
   return (
-    <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:'1rem' }}>
+    <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(min(100%,280px),1fr))', gap:'1rem' }}>
       {tournaments.map((t: any) => (
         <TournamentCard key={t.id} tournament={t} onOpen={() => onOpen(t.id)}/>
       ))}

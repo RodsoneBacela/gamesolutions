@@ -22,6 +22,7 @@ export default function Modal({ open, onClose, title, children, footer, size = '
   if (!open) return null;
 
   const maxW = size === 'sm' ? '400px' : size === 'lg' ? '680px' : '520px';
+  // On mobile, always use full width
 
   return (
     <div className="modal-overlay" onClick={onClose}>

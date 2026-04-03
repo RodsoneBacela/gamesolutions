@@ -52,7 +52,7 @@ export default function EquipmentPage() {
   return (
     <div>
       {/* Header */}
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
+      <div className="page-header" style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
         <div>
           <h1 className="font-display" style={{ fontSize:'1.75rem', fontWeight:700 }}>Equipamentos & Jogos</h1>
           <p style={{ color:'var(--text-muted)', fontSize:'0.875rem' }}>Gestão de equipamentos, catálogo de jogos e manutenção</p>
@@ -102,7 +102,7 @@ export default function EquipmentPage() {
       {tab==='games' && (
         <div>
           {gLoad && (
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))', gap:'1rem' }}>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(min(100%,220px),1fr))', gap:'1rem' }}>
               {[...Array(6)].map((_,i) => <div key={i} className="skeleton" style={{ height:160 }}/>)}
             </div>
           )}
@@ -113,7 +113,7 @@ export default function EquipmentPage() {
               <button className="btn btn-primary" onClick={() => setNewGameOpen(true)}><Plus size={14}/> Adicionar Jogo</button>
             </div>
           )}
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))', gap:'1rem' }}>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(min(100%,220px),1fr))', gap:'1rem' }}>
             {games.map((g: any) => {
               const accent = g.cover_color || '#0ea5e9';
               return (

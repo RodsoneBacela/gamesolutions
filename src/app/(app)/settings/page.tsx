@@ -38,7 +38,7 @@ export default function SettingsPage() {
             <h2 className="font-display" style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.75rem', color: mode === 'Solo' ? 'var(--brand)' : 'var(--purple)' }}>
               {mode === 'Solo' ? '⚡ Solo' : '👥 Acompanhado'}
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%,180px),1fr))', gap: '0.75rem' }}>
               {list.map((r: any) => (
                 <div key={r.id} className="card" style={{ position: 'relative' }}>
                   <p style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: 4 }}>{r.name}</p>

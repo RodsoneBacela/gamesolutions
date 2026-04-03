@@ -95,7 +95,7 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
           <h1 className="font-display" style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>Dashboard</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>Visão em tempo real · {new Date().toLocaleDateString('pt-MZ', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
@@ -106,7 +106,7 @@ export default function DashboardPage() {
       </div>
 
       {/* KPIs */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+      <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
         <KpiCard label="Sessões Activas" value={isLoading ? '—' : kpi?.active_sessions ?? 0} icon={Gamepad2} color="var(--brand)" />
         <KpiCard label="Receita Hoje" value={isLoading ? '—' : fmt.currency(kpi?.revenue_today ?? 0)} icon={DollarSign} color="var(--green)" />
         <KpiCard label="Sessões Hoje" value={isLoading ? '—' : kpi?.sessions_today ?? 0} icon={TrendingUp} color="var(--purple)" />
@@ -115,18 +115,18 @@ export default function DashboardPage() {
         <KpiCard label="Total Clientes" value={isLoading ? '—' : kpi?.total_clients ?? 0} icon={Users} color="var(--brand)" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 400px), 1fr))', gap: '1.5rem' }}>
         {/* Stations */}
         <div>
           <h2 className="font-display" style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
             <Monitor size={16} style={{ display: 'inline', marginRight: 6 }} />Estações
           </h2>
           {isLoading ? (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+            <div className="station-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               {[...Array(4)].map((_, i) => <div key={i} className="skeleton" style={{ height: 100 }} />)}
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+            <div className="station-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               {stations.map((s: any) => <StationCard key={s.id} s={s} onNewSession={() => {}} />)}
             </div>
           )}

@@ -24,14 +24,14 @@ export default function LedgerPage() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div><h1 className="font-display" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Ledger</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>Movimentos financeiros</p></div>
         <button className="btn btn-primary" onClick={() => setNewOpen(true)}><Plus size={16} /> Novo Movimento</button>
       </div>
 
       {/* KPIs */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+      <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
         {[
           { label: 'Total Receitas', value: fmt.currency(income), color: 'var(--green)', icon: TrendingUp },
           { label: 'Total Despesas', value: fmt.currency(expense), color: 'var(--red)', icon: TrendingDown },
@@ -50,7 +50,7 @@ export default function LedgerPage() {
       </div>
 
       {/* Filters */}
-      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+      <div className="filter-row" style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
         <select className="input" style={{ width: 160 }} value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
           <option value="">Todos</option><option value="Income">Receitas</option><option value="Expense">Despesas</option>
         </select>
@@ -60,7 +60,7 @@ export default function LedgerPage() {
 
       <div className="table-wrapper">
         <table>
-          <thead><tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Método</th><th>Tipo</th><th style={{ textAlign: 'right' }}>Valor</th></tr></thead>
+          <thead><tr><th className="hide-mobile">Data</th><th>Descrição</th><th className="hide-mobile">Categoria</th><th className="hide-mobile">Método</th><th>Tipo</th><th style={{ textAlign: 'right' }}>Valor</th></tr></thead>
           <tbody>
             {isLoading && <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>A carregar...</td></tr>}
             {!isLoading && entries.length === 0 && <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>Sem movimentos</td></tr>}

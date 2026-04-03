@@ -62,7 +62,7 @@ export default function CaixaPage() {
 
   return (
     <div style={{ maxWidth: 860 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
           <h1 className="font-display" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Caixa</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>Controlo de metas e facturação diária</p>
@@ -149,7 +149,7 @@ export default function CaixaPage() {
               </div>
 
               {/* KPI cards */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
                 {[
                   { label: 'Total Obtido', value: fmt.currency(collected), color: 'var(--green)', icon: TrendingUp },
                   { label: 'Meta do Dia', value: fmt.currency(target), color: 'var(--brand)', icon: Target },

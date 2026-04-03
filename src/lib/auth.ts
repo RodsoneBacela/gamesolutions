@@ -44,7 +44,9 @@ export function withAuth(handler: Handler, options?: { adminOnly?: boolean }) {
   return async (req: NextRequest, ctx: { params: Promise<Record<string, string>> }) => {
     const params = await ctx.params;
     const authHeader = req.headers.get('authorization');
+    console.log('Authorization:', authHeader);
     if (!authHeader?.startsWith('Bearer ')) {
+      console.log('❌ Missing or wrong Authorization header');
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
     const token = authHeader.slice(7);

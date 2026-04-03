@@ -63,7 +63,7 @@ export default function SessionsPage() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
         <div>
           <h1 className="font-display" style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>Sessões</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>{filtered.length} sessões encontradas</p>
@@ -72,7 +72,7 @@ export default function SessionsPage() {
       </div>
 
       {/* Filters */}
-      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+      <div className="filter-row" style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
         <div style={{ position: 'relative', flex: 1, minWidth: 200 }}>
           <Search size={14} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-dim)' }} />
           <input className="input" style={{ paddingLeft: 32 }} placeholder="Pesquisar cliente ou estação..." value={search} onChange={e => setSearch(e.target.value)} />
@@ -90,7 +90,7 @@ export default function SessionsPage() {
           <thead>
             <tr>
               <th>#</th><th>Cliente</th><th>Estação</th><th>Modo</th>
-              <th>Início</th><th>Duração</th><th>Jogo</th><th>Jogos</th><th>Valor</th>
+              <th className="hide-mobile">Início</th><th className="hide-mobile">Duração</th><th className="hide-mobile">Jogo</th><th className="hide-mobile">Jogos</th><th>Valor</th>
               <th>Status</th><th>Pagamento</th><th>Acções</th>
             </tr>
           </thead>
@@ -103,8 +103,8 @@ export default function SessionsPage() {
                 <td style={{ fontWeight: 500 }}>{s.client_name}</td>
                 <td style={{ color: 'var(--text-muted)' }}>{s.station_name} <span style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>{s.console}</span></td>
                 <td><span className={`badge ${s.mode === 'Solo' ? 'badge-blue' : 'badge-purple'}`}>{s.mode}</span></td>
-                <td style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{fmt.datetime(s.started_at)}</td>
-                <td style={{ fontSize: '0.8rem' }}>{fmt.duration(s.duration_min)}</td>
+                <td className="hide-mobile" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{fmt.datetime(s.started_at)}</td>
+                <td className="hide-mobile" style={{ fontSize: '0.8rem' }}>{fmt.duration(s.duration_min)}</td>
                 <td>
                   {s.game_name
                     ? <span style={{ fontSize: '0.82rem', fontWeight: 500 }}>{s.game_name}</span>

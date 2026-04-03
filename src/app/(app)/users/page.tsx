@@ -29,7 +29,7 @@ export default function UsersPage() {
 
       <div className="table-wrapper">
         <table>
-          <thead><tr><th>Utilizador</th><th>Email</th><th>Role</th><th>Último Login</th><th>Status</th><th>Acções</th></tr></thead>
+          <thead><tr><th>Utilizador</th><th className="hide-mobile">Email</th><th>Role</th><th className="hide-mobile">Último Login</th><th>Status</th><th>Acções</th></tr></thead>
           <tbody>
             {isLoading && <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>A carregar...</td></tr>}
             {users.map((u: any) => (
